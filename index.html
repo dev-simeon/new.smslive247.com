@@ -1,0 +1,2364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMSLive247 - Modern SMS Messaging Platform</title>
+
+    <meta
+      name="description"
+      content="Professional SMS messaging platform with bulk SMS, sender ID registration, analytics, and API integration. Trusted by 10,000+ businesses worldwide."
+    />
+    <meta
+      name="keywords"
+      content="SMS, bulk SMS, text messaging, SMS API, sender ID, messaging platform"
+    />
+    <meta
+      property="og:title"
+      content="SMSLive247 - Modern SMS Messaging Platform"
+    />
+    <meta
+      property="og:description"
+      content="Send bulk SMS messages with 98%+ delivery rates. Features include custom sender IDs, real-time analytics, and powerful API integration."
+    />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://raw.githubusercontent.com/your-repo/your-assets/main/placeholder.svg"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          container: {
+            center: true,
+            padding: "2rem",
+            screens: {
+              "2xl": "1400px",
+            },
+          },
+          extend: {
+            colors: {
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+              ring: "hsl(var(--ring))",
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+              primary: {
+                DEFAULT: "hsl(var(--primary))",
+                foreground: "hsl(var(--primary-foreground))",
+              },
+              secondary: {
+                DEFAULT: "hsl(var(--secondary))",
+                foreground: "hsl(var(--secondary-foreground))",
+              },
+              // SMSLive247 brand colors
+              "sms-primary": "#38bdf8", // Blue as primary
+              "sms-secondary": "#f97316", // Orange as secondary
+              "sms-gray": "#f3f4f6",
+              "sms-text": "#1f2937",
+              destructive: {
+                DEFAULT: "hsl(var(--destructive))",
+                foreground: "hsl(var(--destructive-foreground))",
+              },
+              muted: {
+                DEFAULT: "hsl(var(--muted))",
+                foreground: "hsl(var(--muted-foreground))",
+              },
+              accent: {
+                DEFAULT: "hsl(var(--accent))",
+                foreground: "hsl(var(--accent-foreground))",
+              },
+              popover: {
+                DEFAULT: "hsl(var(--popover))",
+                foreground: "hsl(var(--popover-foreground))",
+              },
+              card: {
+                DEFAULT: "hsl(var(--card))",
+                foreground: "hsl(var(--card-foreground))",
+              },
+              sidebar: {
+                DEFAULT: "hsl(var(--sidebar-background))",
+                foreground: "hsl(var(--sidebar-foreground))",
+                primary: "hsl(var(--sidebar-primary))",
+                "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+                accent: "hsl(var(--sidebar-accent))",
+                "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+                border: "hsl(var(--sidebar-border))",
+                ring: "hsl(var(--sidebar-ring))",
+              },
+            },
+            borderRadius: {
+              lg: "var(--radius)",
+              md: "calc(var(--radius) - 2px)",
+              sm: "calc(var(--radius) - 4px)",
+            },
+            keyframes: {
+              "accordion-down": {
+                from: {
+                  height: "0",
+                },
+                to: {
+                  height: "var(--radix-accordion-content-height)",
+                },
+              },
+              "accordion-up": {
+                from: {
+                  height: "var(--radix-accordion-content-height)",
+                },
+                to: {
+                  height: "0",
+                },
+              },
+            },
+            animation: {
+              "accordion-down": "accordion-down 0.2s ease-out",
+              "accordion-up": "accordion-up 0.2s ease-out",
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/swiper@11.2.8/swiper-bundle.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      id="mainNav"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
+      data-aos="fade-down"
+      data-aos-duration="600"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+          <!-- Logo -->
+          <div class="flex items-center gap-2">
+            <span
+              class="bg-sms-primary p-2 rounded-lg d-inline-flex align-items-center justify-content-center"
+            >
+              <i class="fa-solid fa-message text-2xl text-white"></i>
+            </span>
+            <span class="text-xl lg:text-2xl font-bold text-sms-text">
+              SMSLive247
+            </span>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center gap-8">
+            <a
+              href="#features"
+              class="text-sms-text hover:text-sms-primary transition-colors font-medium"
+              >Features</a
+            >
+            <a
+              href="#pricing"
+              class="text-sms-text hover:text-sms-primary transition-colors font-medium"
+              >Pricing</a
+            >
+            <a
+              href="#use-cases"
+              class="text-sms-text hover:text-sms-primary transition-colors font-medium"
+              >Use Cases</a
+            >
+            <a
+              href="#api"
+              class="text-sms-text hover:text-sms-primary transition-colors font-medium"
+              >API</a
+            >
+            <a
+              href="#contact"
+              class="text-sms-text hover:text-sms-primary transition-colors font-medium"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Desktop CTA -->
+          <div class="hidden lg:flex items-center gap-4">
+            <button
+              class="px-4 py-2 border-2 border-sms-primary text-sms-primary hover:bg-sms-primary hover:text-white rounded-lg transition-all duration-200 font-medium"
+            >
+              Sign In
+            </button>
+            <button
+              class="px-4 py-2 bg-sms-primary hover:bg-sms-primary/90 text-white rounded-lg transition-all duration-200 font-medium"
+            >
+              Get Started
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobileMenuToggle"
+            class="lg:hidden p-2 text-sms-text hover:text-sms-primary transition-colors"
+          >
+            <i id="mobileMenuIcon" class="fas fa-bars w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div
+        id="mobileMenu"
+        class="lg:hidden bg-white border-t border-gray-200 shadow-lg mobile-menu"
+      >
+        <div class="px-4 py-6 space-y-4">
+          <a
+            href="#features"
+            class="block text-sms-text hover:text-sms-primary transition-colors font-medium py-2 mobile-nav-link"
+            >Features</a
+          >
+          <a
+            href="#use-cases"
+            class="block text-sms-text hover:text-sms-primary transition-colors font-medium py-2 mobile-nav-link"
+            >Use Cases</a
+          >
+          <a
+            href="#pricing"
+            class="block text-sms-text hover:text-sms-primary transition-colors font-medium py-2 mobile-nav-link"
+            >Pricing</a
+          >
+          <a
+            href="#api"
+            class="block text-sms-text hover:text-sms-primary transition-colors font-medium py-2 mobile-nav-link"
+            >API</a
+          >
+          <a
+            href="#contact"
+            class="block text-sms-text hover:text-sms-primary transition-colors font-medium py-2 mobile-nav-link"
+            >Contact</a
+          >
+          <div class="pt-4 space-y-3">
+            <button
+              class="w-full px-4 py-2 border-2 border-sms-primary text-sms-primary hover:bg-sms-primary hover:text-white rounded-lg transition-all duration-200 font-medium"
+            >
+              Sign In
+            </button>
+            <button
+              class="w-full px-4 py-2 bg-sms-primary hover:bg-sms-primary/90 text-white rounded-lg transition-all duration-200 font-medium"
+            >
+              Get Started
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="relative overflow-hidden bg-gradient-to-br from-white via-sms-gray/30 to-white"
+    >
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgb(0_0_0/0.15)_1px,transparent_0)] [background-size:20px_20px] opacity-5"
+      ></div>
+
+      <div
+        class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-32 lg:pb-24"
+      >
+        <div class="text-center">
+          <div class="mb-8" data-aos="fade-up" data-aos-duration="600">
+            <div
+              class="inline-flex items-center gap-2 bg-sms-primary/10 text-sms-primary px-4 py-2 rounded-full text-sm font-medium mb-6"
+            >
+              <i class="fas fa-bolt w-4 h-4"></i>
+              Nigeria's #1 SMS Platform
+            </div>
+
+            <h1
+              class="text-4xl sm:text-5xl lg:text-6xl font-bold text-sms-text leading-tight"
+            >
+              Send SMS That
+              <span class="block text-sms-primary">
+                Actually Reach Your Customers
+              </span>
+            </h1>
+
+            <p
+              class="text-xl text-gray-600 mt-6 max-w-3xl mx-auto leading-relaxed"
+            >
+              <strong>Join 5,000+ Nigerian businesses</strong> sending millions
+              of SMS monthly. Reach ALL networks (MTN, Airtel, Glo, 9mobile) +
+              650 international networks.
+            </p>
+          </div>
+
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+            data-aos="fade-up"
+            data-aos-duration="600"
+            data-aos-delay="200"
+          >
+            <button
+              class="bg-sms-primary hover:bg-sms-primary/90 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 btn-arrow-group"
+            >
+              Get Started Now
+              <i class="fas fa-arrow-right ml-2 w-5 h-5 btn-arrow"></i>
+            </button>
+
+            <button
+              class="border-2 border-sms-primary text-sms-primary hover:bg-sms-primary hover:text-white px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-200"
+            >
+              Sign In
+            </button>
+          </div>
+
+          <div
+            class="relative"
+            data-aos="zoom-in"
+            data-aos-duration="800"
+            data-aos-delay="400"
+          >
+            <div
+              class="bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 max-w-4xl mx-auto"
+            >
+              <div class="flex items-center gap-2 mb-4">
+                <div class="flex gap-2">
+                  <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                  <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                  <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                </div>
+                <div class="flex items-center gap-2 ml-4 text-sm text-gray-500">
+                  <i class="fas fa-comment-dots w-4 h-4"></i>
+                  Live SMSLive247 Dashboard
+                </div>
+              </div>
+
+              <div class="bg-gray-50 rounded-lg p-6 text-left">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm font-medium text-gray-600">
+                      Campaign Status
+                    </span>
+                    <span
+                      class="text-sm font-semibold text-green-600 flex items-center gap-1"
+                    >
+                      <i class="fas fa-bullseye w-3 h-3"></i>
+                      DELIVERED
+                    </span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm font-medium text-gray-600">
+                      Nigerian Networks Reached
+                    </span>
+                    <span class="text-sm font-semibold text-sms-text">
+                      15,247 customers
+                    </span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm font-medium text-gray-600">
+                      Delivery Success Rate
+                    </span>
+                    <span
+                      class="text-sm font-semibold text-sms-primary flex items-center gap-1"
+                    >
+                      <i class="fas fa-bullseye w-3 h-3"></i>
+                      98.2% SUCCESS!
+                    </span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2 mt-4">
+                    <div
+                      class="bg-sms-primary h-2 rounded-full"
+                      style="width: 98.2%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trust indicators -->
+            <div
+              class="flex justify-center items-center gap-8 mt-8 text-sm text-gray-600"
+            >
+              <div class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span>10M+ Messages Sent</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span>24/7 Nigerian Support</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span>All NG Networks</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="pt-20 pb-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl lg:text-4xl font-bold text-sms-text mb-4">
+            Everything You Need to Dominate SMS Marketing
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Stop losing customers to failed SMS delivery! Our platform
+            guarantees
+            <span class="text-sms-primary font-semibold">
+              98%+ delivery rates</span
+            >
+            to ALL Nigerian networks with features that actually work.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div data-aos="fade-up" data-aos-delay="0">
+            <div
+              class="h-full border-0 shadow-sm hover:shadow-xl transition-all duration-300 group rounded-lg"
+            >
+              <div class="p-6">
+                <div
+                  class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gray-50 mb-4 group-hover:scale-110 transition-transform duration-300"
+                >
+                  <i class="fa-solid fa-globe text-2xl text-purple-600"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-sms-text mb-3">
+                  Global + Local Reach
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Send to Nigeria + 650 international networks in 210 countries.
+                  One platform for all your SMS needs!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div
+              class="h-full border-0 shadow-sm hover:shadow-xl transition-all duration-300 group rounded-lg"
+            >
+              <div class="p-6">
+                <div
+                  class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gray-50 mb-4 group-hover:scale-110 transition-transform duration-300"
+                >
+                  <i class="fa-solid fa-chart-line text-2xl text-green-600"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-sms-text mb-3">
+                  Real-Time Success Tracking
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Watch your messages deliver in real-time! Get instant reports
+                  showing exactly which messages reached your customers.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="200">
+            <div
+              class="h-full border-0 shadow-sm hover:shadow-xl transition-all duration-300 group rounded-lg"
+            >
+              <div class="p-6">
+                <div
+                  class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gray-50 mb-4 group-hover:scale-110 transition-transform duration-300"
+                >
+                  <i class="fa-solid fa-code text-2xl text-sms-primary"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-sms-text mb-3">
+                  Developer-Friendly API
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Integrate SMS into ANY system in minutes! Our simple API works
+                  with websites, apps, and business software.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="300">
+            <div
+              class="h-full border-0 shadow-sm hover:shadow-xl transition-all duration-300 group rounded-lg"
+            >
+              <div class="p-6">
+                <div
+                  class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gray-50 mb-4 group-hover:scale-110 transition-transform duration-300"
+                >
+                  <i
+                    class="fa-solid fa-address-book text-2xl text-sms-secondary"
+                  ></i>
+                </div>
+                <h3 class="text-xl font-semibold text-sms-text mb-3">
+                  Smart Contact Management
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Upload thousands of contacts instantly via CSV. Group them,
+                  filter them, manage opt-outs automatically!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="400">
+            <div
+              class="h-full border-0 shadow-sm hover:shadow-xl transition-all duration-300 group rounded-lg"
+            >
+              <div class="p-6">
+                <div
+                  class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gray-50 mb-4 group-hover:scale-110 transition-transform duration-300"
+                >
+                  <i class="fa-solid fa-users text-2xl text-purple-600"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-sms-text mb-3">
+                  Smart Sub-Account System
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Manage multiple users, departments, or clients under one
+                  account. Perfect for agencies and large organizations!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-24" data-aos="fade-up" data-aos-delay="500">
+          <div
+            class="bg-gradient-to-r from-sms-primary to-sms-secondary rounded-2xl p-8 text-white"
+          >
+            <div class="flex items-center justify-center gap-2 mb-4">
+              <i class="fa-solid fa-bullseye text-2xl"></i>
+              <h3 class="text-2xl font-bold">
+                Ready to 10X Your Customer Engagement?
+              </h3>
+            </div>
+            <p class="text-lg mb-6 opacity-90">
+              Join 5,000+ Nigerian businesses already crushing their SMS
+              marketing goals.
+              <strong> Get started in under 60 seconds!</strong>
+            </p>
+            <button
+              class="bg-white text-sms-primary font-semibold px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              Join Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="py-20 bg-sms-gray">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl lg:text-4xl font-bold text-sms-text mb-4">
+            How SMSLive247 Works
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Get started in minutes with our simple, powerful platform designed
+            for businesses of all sizes.
+          </p>
+        </div>
+
+        <div class="relative">
+          <div
+            class="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-sms-primary via-sms-secondary to-sms-primary transform -translate-y-1/2 z-0"
+          ></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 relative z-10">
+            <div class="relative" data-aos="fade-up" data-aos-delay="0">
+              <div
+                class="bg-white border-0 shadow-lg hover:shadow-xl h-full transition-all duration-300 group rounded-lg"
+              >
+                <div class="p-6 text-center">
+                  <div
+                    class="absolute -top-4 left-1/2 transform -translate-x-1/2"
+                  >
+                    <div
+                      class="bg-sms-primary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
+                    >
+                      01
+                    </div>
+                  </div>
+                  <div
+                    class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-sms-primary/10 mb-6 group-hover:bg-sms-primary/20 transition-colors duration-300 mt-4"
+                  >
+                    <i
+                      class="fa-solid fa-user-plus text-[32px] text-sms-primary"
+                    ></i>
+                  </div>
+                  <h3 class="text-xl font-semibold text-sms-text mb-3">
+                    Sign Up & Setup
+                  </h3>
+                  <p class="text-gray-600 mb-6 leading-relaxed">
+                    Create your account, verify your identity, and register your
+                    custom sender ID for brand recognition.
+                  </p>
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Quick 5-minute registration</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Identity verification</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Sender ID registration</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Account configuration</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="relative" data-aos="fade-up" data-aos-delay="200">
+              <div
+                class="bg-white border-0 shadow-lg hover:shadow-xl h-full transition-all duration-300 group rounded-lg"
+              >
+                <div class="p-6 text-center">
+                  <div
+                    class="absolute -top-4 left-1/2 transform -translate-x-1/2"
+                  >
+                    <div
+                      class="bg-sms-primary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
+                    >
+                      02
+                    </div>
+                  </div>
+                  <div
+                    class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-sms-primary/10 mb-6 group-hover:bg-sms-primary/20 transition-colors duration-300 mt-4"
+                  >
+                    <i
+                      class="fa-solid fa-message text-[32px] text-sms-primary"
+                    ></i>
+                  </div>
+                  <h3 class="text-xl font-semibold text-sms-text mb-3">
+                    Create Your Message
+                  </h3>
+                  <p class="text-gray-600 mb-6 leading-relaxed">
+                    Compose your message, select recipients, and schedule
+                    delivery using our intuitive dashboard or API.
+                  </p>
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Drag-and-drop composer</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Contact management</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Message scheduling</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Template library</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="relative" data-aos="fade-up" data-aos-delay="400">
+              <div
+                class="bg-white border-0 shadow-lg hover:shadow-xl h-full transition-all duration-300 group rounded-lg"
+              >
+                <div class="p-6 text-center">
+                  <div
+                    class="absolute -top-4 left-1/2 transform -translate-x-1/2"
+                  >
+                    <div
+                      class="bg-sms-primary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
+                    >
+                      03
+                    </div>
+                  </div>
+                  <div
+                    class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-sms-primary/10 mb-6 group-hover:bg-sms-primary/20 transition-colors duration-300 mt-4"
+                  >
+                    <i
+                      class="fa-solid fa-paper-plane text-[32px] text-sms-primary"
+                    ></i>
+                  </div>
+                  <h3 class="text-xl font-semibold text-sms-text mb-3">
+                    Send & Deliver
+                  </h3>
+                  <p class="text-gray-600 mb-6 leading-relaxed">
+                    Your messages are instantly processed through our global
+                    network with 99.9% uptime and optimized routing.
+                  </p>
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Global delivery network</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Intelligent routing</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Real-time processing</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Delivery optimization</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="relative" data-aos="fade-up" data-aos-delay="600">
+              <div
+                class="bg-white border-0 shadow-lg hover:shadow-xl h-full transition-all duration-300 group rounded-lg"
+              >
+                <div class="p-6 text-center">
+                  <div
+                    class="absolute -top-4 left-1/2 transform -translate-x-1/2"
+                  >
+                    <div
+                      class="bg-sms-primary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
+                    >
+                      04
+                    </div>
+                  </div>
+                  <div
+                    class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-sms-primary/10 mb-6 group-hover:bg-sms-primary/20 transition-colors duration-300 mt-4"
+                  >
+                    <i
+                      class="fa-solid fa-chart-bar text-[32px] text-sms-primary"
+                    ></i>
+                  </div>
+                  <h3 class="text-xl font-semibold text-sms-text mb-3">
+                    Track & Analyze
+                  </h3>
+                  <p class="text-gray-600 mb-6 leading-relaxed">
+                    Monitor delivery status, view detailed analytics, and
+                    optimize your campaigns for better results.
+                  </p>
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Real-time tracking</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Delivery reports</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>Performance analytics</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                      <div
+                        class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                      ></div>
+                      <span>ROI optimization</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="800">
+          <div class="bg-white rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">
+            <h3 class="text-2xl font-bold text-sms-text mb-4">
+              Ready to send your first message?
+            </h3>
+            <p class="text-lg text-gray-600 mb-6">
+              Join thousands of businesses who trust SMSLive247 for their SMS
+              communication needs.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                class="bg-sms-primary hover:bg-sms-primary/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+              >
+                Get Started Now!
+              </button>
+              <button
+                class="border-2 border-sms-primary text-sms-primary hover:bg-sms-primary hover:text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+              >
+                Watch Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-3" data-aos="fade-up">
+          <div class="flex items-center justify-center gap-2 mb-4">
+            <h2 class="text-3xl lg:text-4xl font-bold text-sms-text">
+              The More You Send, The More You Save!
+            </h2>
+          </div>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Our volume pricing automatically saves you money on every campaign.
+            <span class="text-sms-primary font-bold">
+              No hidden fees. No contracts. No surprises!
+            </span>
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-12"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <div class="bg-sms-gray rounded-lg p-4 text-center">
+            <div class="text-lg font-semibold text-sms-text mb-1">
+              100-4,999 SMS
+            </div>
+            <div class="text-2xl font-bold text-sms-primary">₦2.35</div>
+            <div class="text-sm text-gray-600 mb-2">per SMS</div>
+            <div class="text-xs text-green-600 font-medium">Save ₦0</div>
+          </div>
+          <div class="bg-sms-gray rounded-lg p-4 text-center">
+            <div class="text-lg font-semibold text-sms-text mb-1">
+              5,000-9,999 SMS
+            </div>
+            <div class="text-2xl font-bold text-sms-primary">₦2.25</div>
+            <div class="text-sm text-gray-600 mb-2">per SMS</div>
+            <div class="text-xs text-green-600 font-medium">Save ₦500+</div>
+          </div>
+          <div class="bg-sms-gray rounded-lg p-4 text-center">
+            <div class="text-lg font-semibold text-sms-text mb-1">
+              10,000-49,999 SMS
+            </div>
+            <div class="text-2xl font-bold text-sms-primary">₦2.15</div>
+            <div class="text-sm text-gray-600 mb-2">per SMS</div>
+            <div class="text-xs text-green-600 font-medium">Save ₦2,000+</div>
+          </div>
+          <div class="bg-sms-gray rounded-lg p-4 text-center">
+            <div class="text-lg font-semibold text-sms-text mb-1">
+              50,000+ SMS
+            </div>
+            <div class="text-2xl font-bold text-sms-primary">₦2.05</div>
+            <div class="text-sm text-gray-600 mb-2">per SMS</div>
+            <div class="text-xs text-green-600 font-medium">Save ₦15,000+</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="use-cases" class="py-20 bg-sms-gray">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl lg:text-4xl font-bold text-sms-text mb-4">
+            Perfect for Every Industry
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            From startups to enterprises, businesses across all industries trust
+            SMSLive247 to deliver critical communications to their customers.
+          </p>
+        </div>
+
+        <div class="relative" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex justify-end gap-2 mb-4">
+            <button
+              class="use-case-swiper-button-prev bg-white border border-gray-300 rounded-full p-2 shadow hover:bg-sms-primary hover:text-white transition"
+              aria-label="Previous"
+            >
+              <i class="fa-solid fa-chevron-left w-5 h-5"></i>
+            </button>
+            <button
+              class="use-case-swiper-button-next bg-white border border-gray-300 rounded-full p-2 shadow hover:bg-sms-primary hover:text-white transition"
+              aria-label="Next"
+            >
+              <i class="fa-solid fa-chevron-right w-5 h-5"></i>
+            </button>
+          </div>
+
+          <div class="swiper use-case-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide h-auto px-2">
+                <div
+                  class="h-full bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 group rounded-lg min-h-[309px]"
+                >
+                  <div class="p-6">
+                    <div
+                      class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-sms-primary/10 group-hover:bg-sms-primary/20 transition-colors duration-300 flex justify-center items-center"
+                    >
+                      <i
+                        class="fa-solid fa-briefcase text-2xl text-sms-primary"
+                      ></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-sms-text">
+                      E-commerce & Retail
+                    </h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                      Order confirmations, shipping updates, promotional
+                      campaigns, and abandoned cart recovery.
+                    </p>
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Order confirmations</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Shipping notifications</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Flash sales alerts</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Customer surveys</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide h-auto px-2">
+                <div
+                  class="h-full bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 group rounded-lg min-h-[309px]"
+                >
+                  <div class="p-6">
+                    <div
+                      class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-sms-primary/10 group-hover:bg-sms-primary/20 transition-colors duration-300 flex justify-center items-center"
+                    >
+                      <i
+                        class="fa-solid fa-stethoscope text-2xl text-sms-primary"
+                      ></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-sms-text">
+                      Healthcare
+                    </h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                      Appointment reminders, test results, medication alerts,
+                      and emergency notifications.
+                    </p>
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Appointment reminders</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600">Test results</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Medication alerts</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600">Health tips</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide h-auto px-2">
+                <div
+                  class="h-full bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 group rounded-lg min-h-[309px]"
+                >
+                  <div class="p-6">
+                    <div
+                      class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-sms-primary/10 group-hover:bg-sms-primary/20 transition-colors duration-300 flex justify-center items-center"
+                    >
+                      <i
+                        class="fa-solid fa-graduation-cap text-2xl text-sms-primary"
+                      ></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-sms-text">
+                      Education
+                    </h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                      Class updates, exam schedules, fee reminders, and
+                      important announcements.
+                    </p>
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Class schedules</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Exam notifications</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600">Fee reminders</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600">Event updates</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide h-auto px-2">
+                <div
+                  class="h-full bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 group rounded-lg min-h-[309px]"
+                >
+                  <div class="p-6">
+                    <div
+                      class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-sms-primary/10 group-hover:bg-sms-primary/20 transition-colors duration-300 flex justify-center items-center"
+                    >
+                      <i
+                        class="fa-solid fa-building text-2xl text-sms-primary"
+                      ></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-sms-text">
+                      Enterprise
+                    </h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                      Employee communications, system alerts, meeting reminders,
+                      and security notifications.
+                    </p>
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600">System alerts</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Meeting reminders</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Security codes</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Policy updates</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide h-auto px-2">
+                <div
+                  class="h-full bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 group rounded-lg min-h-[309px]"
+                >
+                  <div class="p-6">
+                    <div
+                      class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-sms-primary/10 group-hover:bg-sms-primary/20 transition-colors duration-300 flex justify-center items-center"
+                    >
+                      <i
+                        class="fa-solid fa-credit-card text-2xl text-sms-primary"
+                      ></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-sms-text">
+                      Financial Services
+                    </h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                      Transaction alerts, account updates, payment reminders,
+                      and fraud notifications.
+                    </p>
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Transaction alerts</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600">Payment due</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Account updates</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="w-1.5 h-1.5 bg-sms-secondary rounded-full"
+                        ></div>
+                        <span class="text-sm text-gray-600"
+                          >Security alerts</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl lg:text-4xl font-bold text-sms-text mb-4">
+            Real-Time Delivery Analytics
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Get complete visibility into your SMS campaigns with detailed
+            analytics, delivery reports, and performance insights.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div data-aos="fade-up" data-aos-delay="0">
+            <div class="border-0 shadow-lg rounded-lg">
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <i class="fa-solid fa-message text-2xl text-sms-primary"></i
+                  ><span class="text-sm font-medium text-green-600"
+                    >+12.5%</span
+                  >
+                </div>
+                <div class="text-2xl font-bold text-sms-text mb-1">125,847</div>
+                <div class="text-sm text-gray-600">Messages Sent</div>
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div class="border-0 shadow-lg rounded-lg">
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <i
+                    class="fa-solid fa-circle-check text-2xl text-green-600"
+                  ></i
+                  ><span class="text-sm font-medium text-green-600">+2.1%</span>
+                </div>
+                <div class="text-2xl font-bold text-sms-text mb-1">96.2%</div>
+                <div class="text-sm text-gray-600">Delivery Rate</div>
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="200">
+            <div class="border-0 shadow-lg rounded-lg">
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <i class="fa-solid fa-circle-xmark text-2xl text-red-500"></i
+                  ><span class="text-sm font-medium text-green-600">-0.8%</span>
+                </div>
+                <div class="text-2xl font-bold text-sms-text mb-1">2.3%</div>
+                <div class="text-sm text-gray-600">Failed Messages</div>
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="300">
+            <div class="border-0 shadow-lg rounded-lg">
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <i
+                    class="fa-solid fa-arrow-trend-up text-2xl text-sms-secondary"
+                  ></i
+                  ><span class="text-sm font-medium text-green-600">+3.2%</span>
+                </div>
+                <div class="text-2xl font-bold text-sms-text mb-1">+15.3%</div>
+                <div class="text-sm text-gray-600">Growth Rate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          <div data-aos="fade-right" data-aos-delay="200">
+            <div class="border-0 shadow-lg rounded-lg">
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-sms-text mb-4">
+                  Daily Delivery Performance
+                </h3>
+                <div><canvas id="dailyPerformanceChart"></canvas></div>
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-left" data-aos-delay="400">
+            <div class="border-0 shadow-lg rounded-lg">
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-sms-text mb-4">
+                  Message Status Distribution
+                </h3>
+                <div>
+                  <canvas id="statusDistributionChart" class="mx-auto"></canvas>
+                </div>
+                <div class="flex justify-center gap-6 mt-4">
+                  <div class="flex items-center gap-2">
+                    <div
+                      class="w-3 h-3 rounded-full"
+                      style="background-color: #10b981"
+                    ></div>
+                    <span class="text-sm text-gray-600">Delivered (94.2%)</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div
+                      class="w-3 h-3 rounded-full"
+                      style="background-color: #f59e0b"
+                    ></div>
+                    <span class="text-sm text-gray-600">Pending (3.8%)</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div
+                      class="w-3 h-3 rounded-full"
+                      style="background-color: #ef4444"
+                    ></div>
+                    <span class="text-sm text-gray-600">Failed (2.0%)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="600">
+          <div class="border-0 shadow-lg rounded-lg">
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-sms-text mb-4">
+                Delivery Rate Trends
+              </h3>
+              <div><canvas id="deliveryTrendsChart"></canvas></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="800">
+          <div
+            class="bg-gradient-to-r from-sms-primary to-sms-secondary rounded-2xl p-8 text-white"
+          >
+            <h3 class="text-2xl font-bold mb-4">
+              Get insights that drive results
+            </h3>
+            <p class="text-lg mb-6 opacity-90">
+              Make data-driven decisions with our comprehensive analytics
+              dashboard.
+            </p>
+            <button
+              class="bg-white text-sms-primary font-semibold px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              Explore Analytics
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="api" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl lg:text-4xl font-bold text-sms-text mb-4">
+            Developer-Friendly SMS API
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Integrate SMS functionality into your applications with our simple,
+            powerful API. Get started in minutes with comprehensive
+            documentation and SDKs.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <!-- Code Examples Card -->
+          <div data-aos="fade-right" data-aos-delay="200">
+            <div class="border-0 shadow-lg rounded-lg bg-white p-6">
+              <h3 class="text-xl font-semibold text-sms-text mb-4">
+                Code Examples
+              </h3>
+              <div
+                id="code-tabs-triggers"
+                class="grid w-full grid-cols-4 mb-4 bg-gray-100 rounded-lg p-1"
+              >
+                <button
+                  data-target="curl"
+                  class="tab-trigger active text-xs p-2 rounded-md"
+                >
+                  cURL
+                </button>
+                <button
+                  data-target="javascript"
+                  class="tab-trigger text-xs p-2 rounded-md"
+                >
+                  Node.js
+                </button>
+                <button
+                  data-target="python"
+                  class="tab-trigger text-xs p-2 rounded-md"
+                >
+                  Python
+                </button>
+                <button
+                  data-target="php"
+                  class="tab-trigger text-xs p-2 rounded-md"
+                >
+                  PHP
+                </button>
+              </div>
+              <div id="code-tabs-content" class="mt-4">
+                <div id="curl" class="tab-content active">
+                  <div class="relative">
+                    <pre
+                      class="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto text-sm border border-gray-700 font-mono"
+                    ><code class="language-bash">curl -X POST https://api.smslive247.com/v1/sms/send \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "to": "+234803XXXXXXX",
+    "from": "YourBrand", 
+    "message": "Hello from SMSLive247!"
+  }'</code></pre>
+                    <button
+                      class="copy-code-btn absolute top-3 right-3 p-2 text-gray-400 hover:text-white transition-colors bg-gray-800 hover:bg-gray-700 rounded border border-gray-600"
+                    >
+                      <i class="fa-regular fa-copy text-xl"></i>
+                    </button>
+                  </div>
+                </div>
+                <div id="javascript" class="tab-content">
+                  <div class="relative">
+                    <pre
+                      class="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto text-sm border border-gray-700 font-mono"
+                    ><code class="language-javascript">const sms = require('@smslive247/sdk');
+
+const client = new sms.Client('YOUR_API_KEY');
+
+await client.messages.create({
+  to: '+234803XXXXXXX',
+  from: 'YourBrand',
+  body: 'Hello from SMSLive247!'
+});</code></pre>
+                    <button
+                      class="copy-code-btn absolute top-3 right-3 p-2 text-gray-400 hover:text-white transition-colors bg-gray-800 hover:bg-gray-700 rounded border border-gray-600"
+                    >
+                      <i class="fa-regular fa-copy text-xl"></i>
+                    </button>
+                  </div>
+                </div>
+                <div id="python" class="tab-content">
+                  <div class="relative">
+                    <pre
+                      class="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto text-sm border border-gray-700 font-mono"
+                    ><code class="language-python">import smslive247
+
+client = smslive247.Client('YOUR_API_KEY')
+
+message = client.messages.create(
+    to='+234803XXXXXXX',
+    from_='YourBrand',
+    body='Hello from SMSLive247!'
+)</code></pre>
+                    <button
+                      class="copy-code-btn absolute top-3 right-3 p-2 text-gray-400 hover:text-white transition-colors bg-gray-800 hover:bg-gray-700 rounded border border-gray-600"
+                    >
+                      <i class="fa-regular fa-copy text-xl"></i>
+                    </button>
+                  </div>
+                </div>
+                <div id="php" class="tab-content">
+                  <div class="relative">
+                    <pre
+                      class="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto text-sm border border-gray-700 font-mono"
+                    ><code class="language-php"><?php
+require_once 'vendor/autoload.php';
+
+use SMSLive247\Rest\Client;
+
+$client = new Client('YOUR_API_KEY');
+
+$message = $client->messages->create([
+    'to' => '+234803XXXXXXX',
+    'from' => 'YourBrand',
+    'body' => 'Hello from SMSLive247!'
+]);</code></pre>
+                    <button
+                      class="copy-code-btn absolute top-3 right-3 p-2 text-gray-400 hover:text-white transition-colors bg-gray-800 hover:bg-gray-700 rounded border border-gray-600"
+                    >
+                      <i class="fa-regular fa-copy text-xl"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Features List -->
+          <div class="space-y-6" data-aos="fade-left" data-aos-delay="400">
+            <div
+              class="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg bg-white"
+            >
+              <div class="p-6">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="inline-flex items-center justify-center h-12 rounded-lg bg-sms-primary/10"
+                    style="width: 4rem"
+                  >
+                    <i class="fa-solid fa-code text-2xl text-sms-primary"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold text-sms-text mb-2">
+                      RESTful API
+                    </h3>
+                    <p class="text-gray-600">
+                      Simple HTTP-based API with JSON responses. Easy to
+                      integrate with any programming language.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg bg-white"
+            >
+              <div class="p-6">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="inline-flex items-center justify-center h-12 rounded-lg bg-sms-primary/10"
+                    style="width: 4rem"
+                  >
+                    <i
+                      class="fa-solid fa-paper-plane text-2xl text-sms-primary"
+                    ></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold text-sms-text mb-2">
+                      SMPP Integration
+                    </h3>
+                    <p class="text-gray-600">
+                      Enterprise-grade SMPP protocol support for
+                      high-throughput, direct-to-carrier SMS integration.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg bg-white"
+            >
+              <div class="p-6">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-sms-primary/10"
+                  >
+                    <i
+                      class="fa-solid fa-shield-halved text-2xl text-sms-primary"
+                    ></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold text-sms-text mb-2">
+                      Secure Authentication
+                    </h3>
+                    <p class="text-gray-600">
+                      Industry-standard API key authentication with optional IP
+                      whitelisting.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg bg-white"
+            >
+              <div class="p-6">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-sms-primary/10"
+                  >
+                    <i class="fa-solid fa-bolt text-2xl text-sms-primary"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold text-sms-text mb-2">
+                      High Performance
+                    </h3>
+                    <p class="text-gray-600">
+                      99.9% uptime SLA with global infrastructure for
+                      lightning-fast delivery.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-16" data-aos="fade-up" data-aos-delay="400">
+          <div
+            class="bg-gradient-to-r from-sms-primary to-sms-secondary rounded-2xl p-8 text-white"
+          >
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 class="text-2xl font-bold mb-4">Ready to integrate?</h3>
+                <p class="text-lg mb-6 opacity-90">
+                  Get your API key and start sending messages in minutes. Our
+                  comprehensive documentation and SDKs make integration simple.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <button
+                    class="bg-white text-sms-primary font-semibold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    Get API Key
+                  </button>
+                  <button
+                    class="border-2 border-white text-white hover:bg-white hover:text-sms-primary font-semibold px-6 py-3 rounded-lg transition-colors"
+                  >
+                    View Documentation
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section (Converted from React) -->
+    <section class="py-20 bg-sms-gray" id="testimonials">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl lg:text-4xl font-bold text-sms-text mb-4">
+            What Our Customers Say
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Join thousands of satisfied customers who trust SMSLive247 for their
+            business communication needs.
+          </p>
+        </div>
+        <div class="overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
+          <div class="swiper testimonials-swiper">
+            <div class="swiper-wrapper h-[300px]">
+              <!-- Testimonial 1 -->
+              <div class="swiper-slide px-4">
+                <div
+                  class="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 min-h-[260px] rounded-lg"
+                >
+                  <div class="p-6">
+                    <div class="flex items-center gap-1 mb-4">
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                      "SMSLive247 has transformed our customer communication.
+                      The delivery rates are exceptional, and the analytics help
+                      us optimize our campaigns continuously."
+                    </p>
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-12 h-12 rounded-full bg-sms-primary text-white font-semibold flex items-center justify-center text-lg"
+                      >
+                        SJ
+                      </div>
+                      <div>
+                        <div class="font-semibold text-sms-text">
+                          Sarah Johnson
+                        </div>
+                        <div class="text-sm text-gray-600">
+                          Marketing Director
+                        </div>
+                        <div class="text-sm text-sms-primary font-medium">
+                          TechFlow Inc.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Testimonial 2 -->
+              <div class="swiper-slide px-4">
+                <div
+                  class="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 min-h-[260px] rounded-lg"
+                >
+                  <div class="p-6">
+                    <div class="flex items-center gap-1 mb-4">
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                      "The API integration was seamless, and the webhook
+                      functionality gives us real-time updates. Perfect for our
+                      patient notification system."
+                    </p>
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-12 h-12 rounded-full bg-sms-primary text-white font-semibold flex items-center justify-center text-lg"
+                      >
+                        MC
+                      </div>
+                      <div>
+                        <div class="font-semibold text-sms-text">
+                          Michael Chen
+                        </div>
+                        <div class="text-sm text-gray-600">CTO</div>
+                        <div class="text-sm text-sms-primary font-medium">
+                          HealthPlus Solutions
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Testimonial 3 -->
+              <div class="swiper-slide px-4">
+                <div
+                  class="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 min-h-[260px] rounded-lg"
+                >
+                  <div class="p-6">
+                    <div class="flex items-center gap-1 mb-4">
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                      "We've seen a 40% increase in customer engagement since
+                      switching to SMSLive247. The bulk messaging feature is
+                      incredibly reliable."
+                    </p>
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-12 h-12 rounded-full bg-sms-primary text-white font-semibold flex items-center justify-center text-lg"
+                      >
+                        ER
+                      </div>
+                      <div>
+                        <div class="font-semibold text-sms-text">
+                          Emily Rodriguez
+                        </div>
+                        <div class="text-sm text-gray-600">
+                          Operations Manager
+                        </div>
+                        <div class="text-sm text-sms-primary font-medium">
+                          RetailMax
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Testimonial 4 -->
+              <div class="swiper-slide px-4">
+                <div
+                  class="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 min-h-[260px] rounded-lg"
+                >
+                  <div class="p-6">
+                    <div class="flex items-center gap-1 mb-4">
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                      "As a startup, we needed an affordable yet professional
+                      SMS solution. SMSLive247 delivered exactly what we needed
+                      with excellent support."
+                    </p>
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-12 h-12 rounded-full bg-sms-primary text-white font-semibold flex items-center justify-center text-lg"
+                      >
+                        DK
+                      </div>
+                      <div>
+                        <div class="font-semibold text-sms-text">David Kim</div>
+                        <div class="text-sm text-gray-600">Founder</div>
+                        <div class="text-sm text-sms-primary font-medium">
+                          StartupFlow
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Testimonial 5 -->
+              <div class="swiper-slide px-4">
+                <div
+                  class="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 min-h-[260px] rounded-lg"
+                >
+                  <div class="p-6">
+                    <div class="flex items-center gap-1 mb-4">
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                      "The sender ID registration process was smooth, and now
+                      our students immediately recognize our messages.
+                      Game-changer for education."
+                    </p>
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-12 h-12 rounded-full bg-sms-primary text-white font-semibold flex items-center justify-center text-lg"
+                      >
+                        LT
+                      </div>
+                      <div>
+                        <div class="font-semibold text-sms-text">
+                          Lisa Thompson
+                        </div>
+                        <div class="text-sm text-gray-600">
+                          Head of Customer Success
+                        </div>
+                        <div class="text-sm text-sms-primary font-medium">
+                          EduLearn
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Testimonial 6 -->
+              <div class="swiper-slide px-4">
+                <div
+                  class="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 min-h-[260px] rounded-lg"
+                >
+                  <div class="p-6">
+                    <div class="flex items-center gap-1 mb-4">
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                      <i class="fa-solid fa-star w-5 h-5 text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                      "Security and compliance are crucial for us. SMSLive247's
+                      enterprise-grade security gives us peace of mind for
+                      sensitive notifications."
+                    </p>
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-12 h-12 rounded-full bg-sms-primary text-white font-semibold flex items-center justify-center text-lg"
+                      >
+                        JW
+                      </div>
+                      <div>
+                        <div class="font-semibold text-sms-text">
+                          James Wilson
+                        </div>
+                        <div class="text-sm text-gray-600">Product Manager</div>
+                        <div class="text-sm text-sms-primary font-medium">
+                          FinanceHub
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="swiper-pagination w-full flex justify-center gap-2 mx-auto"
+            ></div>
+          </div>
+        </div>
+        <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="400">
+          <div class="bg-white rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">
+            <h3 class="text-2xl font-bold text-sms-text mb-4">
+              Join our satisfied customers
+            </h3>
+            <p class="text-lg text-gray-600 mb-6">
+              Experience the difference with SMSLive247's reliable SMS platform.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                class="bg-sms-primary hover:bg-sms-primary/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+              >
+                Get Started Now!
+              </button>
+              <button
+                class="border-2 border-sms-primary text-sms-primary hover:bg-sms-primary hover:text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+              >
+                Read More Reviews
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <div class="flex items-center justify-center gap-2 mb-4">
+            <i
+              class="fa-regular fa-circle-question text-sms-primary text-2xl"
+            ></i>
+            <h2 class="text-3xl lg:text-4xl font-bold text-sms-text">
+              Got Questions? We've Got INSTANT Answers!
+            </h2>
+          </div>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Nigerian business owners ask us these questions daily. Find your
+            answer below, or
+            <span class="text-sms-primary font-bold">
+              call +234-809-9999-247
+            </span>
+            for instant help from our SMS experts!
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- FAQ Accordion -->
+          <div class="lg:col-span-2" data-aos="fade-right" data-aos-delay="200">
+            <div id="faq-accordion" class="space-y-4">
+              <!-- FAQ Item 1 -->
+              <div
+                class="bg-white border border-gray-200 rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+                data-aos="fade-up"
+                data-aos-delay="0"
+              >
+                <button
+                  class="w-full text-left font-semibold text-sms-text hover:text-sms-primary flex items-center gap-3 py-4 focus:outline-none faq-trigger justify-between"
+                >
+                  <span class="flex items-center gap-3">
+                    <i class="fa-solid fa-bolt text-sms-primary text-2xl flex-shrink-0"></i>
+                    How fast can I start sending SMS to my customers?
+                  </span>
+                  <i class="fa-solid fa-chevron-down text-gray-400 text-lg transition-transform duration-300 faq-chevron"></i>
+                </button>
+                <div
+                  class="faq-content text-gray-600 leading-relaxed pb-4 hidden"
+                >
+                  LIGHTNING FAST! You can send your first SMS in under 60
+                  seconds! Simply register (takes 2 minutes), get your FREE 10
+                  test credits instantly, and start reaching ALL Nigerian
+                  networks (MTN, Airtel, Glo, 9mobile) immediately. No waiting,
+                  no delays, no technical setup required!
+                </div>
+              </div>
+              <!-- FAQ Item 2 -->
+              <div
+                class="bg-white border border-gray-200 rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <button
+                  class="w-full text-left font-semibold text-sms-text hover:text-sms-primary flex items-center gap-3 py-4 focus:outline-none faq-trigger justify-between"
+                >
+                  <span class="flex items-center gap-3">
+                    <i class="fa-solid fa-users text-sms-primary text-2xl flex-shrink-0"></i>
+                    What's a Sender ID and why do I need one?
+                  </span>
+                  <i class="fa-solid fa-chevron-down text-gray-400 text-lg transition-transform duration-300 faq-chevron"></i>
+                </button>
+                <div
+                  class="faq-content text-gray-600 leading-relaxed pb-4 hidden"
+                >
+                  Your Sender ID is your BRAND POWER! Instead of showing a
+                  random number, your SMS will display YOUR company name (like
+                  'SHOPRITE' or 'GTBANK'). This builds instant trust, increases
+                  open rates by 300%+, and makes your business look
+                  professional. We'll help you register it FREE - approval
+                  typically takes 1-3 days.
+                </div>
+              </div>
+              <!-- FAQ Item 3 -->
+              <div
+                class="bg-white border border-gray-200 rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                <button
+                  class="w-full text-left font-semibold text-sms-text hover:text-sms-primary flex items-center gap-3 py-4 focus:outline-none faq-trigger justify-between"
+                >
+                  <span class="flex items-center gap-3">
+                    <i class="fa-solid fa-coins text-sms-primary text-2xl flex-shrink-0"></i>
+                    How do SMS credits work? Will I lose unused credits?
+                  </span>
+                  <i class="fa-solid fa-chevron-down text-gray-400 text-lg transition-transform duration-300 faq-chevron"></i>
+                </button>
+                <div
+                  class="faq-content text-gray-600 leading-relaxed pb-4 hidden"
+                >
+                  SMS credits are simple: 1 credit = 1 SMS to any Nigerian
+                  network! GREAT NEWS: Your credits NEVER expire! Buy once, use
+                  anytime. Short messages use 1 credit, longer messages might
+                  use 2-3 credits. You can track every credit in real-time
+                  through your dashboard.
+                </div>
+              </div>
+              <!-- FAQ Item 4 -->
+              <div
+                class="bg-white border border-gray-200 rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <button
+                  class="w-full text-left font-semibold text-sms-text hover:text-sms-primary flex items-center gap-3 py-4 focus:outline-none faq-trigger justify-between"
+                >
+                  <span class="flex items-center gap-3">
+                    <i class="fa-solid fa-globe text-sms-primary text-2xl flex-shrink-0"></i>
+                    Can I send SMS outside Nigeria? Which countries?
+                  </span>
+                  <i class="fa-solid fa-chevron-down text-gray-400 text-lg transition-transform duration-300 faq-chevron"></i>
+                </button>
+                <div
+                  class="faq-content text-gray-600 leading-relaxed pb-4 hidden"
+                >
+                  YES! We cover Nigeria + 650 international networks across 210
+                  countries worldwide! Send to USA, UK, South Africa, Ghana,
+                  Kenya - anywhere your customers are! Same easy platform, same
+                  reliable delivery. Check your dashboard for specific country
+                  rates.
+                </div>
+              </div>
+              <!-- FAQ Item 5 -->
+              <div
+                class="bg-white border border-gray-200 rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
+                <button
+                  class="w-full text-left font-semibold text-sms-text hover:text-sms-primary flex items-center gap-3 py-4 focus:outline-none faq-trigger justify-between"
+                >
+                  <span class="flex items-center gap-3">
+                    <i class="fa-regular fa-circle-check text-sms-primary text-2xl flex-shrink-0"></i>
+                    How reliable is your SMS delivery? Will my messages actually
+                    reach customers?
+                  </span>
+                  <i class="fa-solid fa-chevron-down text-gray-400 text-lg transition-transform duration-300 faq-chevron"></i>
+                </button>
+                <div
+                  class="faq-content text-gray-600 leading-relaxed pb-4 hidden"
+                >
+                  We GUARANTEE 98%+ delivery rates - that's industry-leading!
+                  Our intelligent routing system automatically finds the best
+                  path for each message. You get real-time delivery reports
+                  showing exactly which messages reached your customers and
+                  which didn't. No more guessing!
+                </div>
+              </div>
+              <!-- FAQ Item 6 -->
+              <div
+                class="bg-white border border-gray-200 rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+                data-aos="fade-up"
+                data-aos-delay="500"
+              >
+                <button
+                  class="w-full text-left font-semibold text-sms-text hover:text-sms-primary flex items-center gap-3 py-4 focus:outline-none faq-trigger justify-between"
+                >
+                  <span class="flex items-center gap-3">
+                    <i class="fa-regular fa-message text-sms-primary text-2xl flex-shrink-0"></i>
+                    Can I connect SMSLive247 to my website or app?
+                  </span>
+                  <i class="fa-solid fa-chevron-down text-gray-400 text-lg transition-transform duration-300 faq-chevron"></i>
+                </button>
+                <div
+                  class="faq-content text-gray-600 leading-relaxed pb-4 hidden"
+                >
+                  ABSOLUTELY! Our super-simple API integrates with ANY system in
+                  minutes - websites, mobile apps, CRM software, e-commerce
+                  platforms. We provide ready-made code examples for PHP,
+                  Python, Node.js, and more. Plus FREE developer support to get
+                  you up and running fast!
+                </div>
+              </div>
+              <!-- FAQ Item 7 -->
+              <div
+                class="bg-white border border-gray-200 rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+                data-aos="fade-up"
+                data-aos-delay="600"
+              >
+                <button
+                  class="w-full text-left font-semibold text-sms-text hover:text-sms-primary flex items-center gap-3 py-4 focus:outline-none faq-trigger justify-between"
+                >
+                  <span class="flex items-center gap-3">
+                    <i class="fa-regular fa-circle-question text-sms-primary text-2xl flex-shrink-0"></i>
+                    What if I need help? Is support really available 24/7?
+                  </span>
+                  <i class="fa-solid fa-chevron-down text-gray-400 text-lg transition-transform duration-300 faq-chevron"></i>
+                </button>
+                <div
+                  class="faq-content text-gray-600 leading-relaxed pb-4 hidden"
+                >
+                  YES! Our Nigerian support team is available 24/7 on
+                  +234-809-9999-247. Real humans, not robots! We also offer
+                  email support (2-hour response), live chat, and business hours
+                  phone support. For enterprise clients, you get dedicated
+                  account managers!
+                </div>
+              </div>
+              <!-- FAQ Item 8 -->
+              <div
+                class="bg-white border border-gray-200 rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+                data-aos="fade-up"
+                data-aos-delay="700"
+              >
+                <button
+                  class="w-full text-left font-semibold text-sms-text hover:text-sms-primary flex items-center gap-3 py-4 focus:outline-none faq-trigger justify-between"
+                >
+                  <span class="flex items-center gap-3">
+                    <i class="fa-solid fa-shield-halved text-sms-primary text-2xl flex-shrink-0"></i>
+                    Do I need to sign a long-term contract?
+                  </span>
+                  <i class="fa-solid fa-chevron-down text-gray-400 text-lg transition-transform duration-300 faq-chevron"></i>
+                </button>
+                <div
+                  class="faq-content text-gray-600 leading-relaxed pb-4 hidden"
+                >
+                  NO CONTRACTS EVER! We believe in earning your business daily,
+                  not trapping you in contracts. Start with FREE credits,
+                  upgrade when you want, downgrade anytime, or pause your
+                  account - total flexibility! Your credits never expire, so
+                  there's zero risk.
+                </div>
+              </div>
+              <!-- FAQ Item 9 -->
+              <div
+                class="bg-white border border-gray-200 rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+                data-aos="fade-up"
+                data-aos-delay="800"
+              >
+                <button
+                  class="w-full text-left font-semibold text-sms-text hover:text-sms-primary flex items-center gap-3 py-4 focus:outline-none faq-trigger justify-between"
+                >
+                  <span class="flex items-center gap-3">
+                    <i class="fa-solid fa-shield-halved text-sms-primary text-2xl flex-shrink-0"></i>
+                    How secure is my customer data and business information?
+                  </span>
+                  <i class="fa-solid fa-chevron-down text-gray-400 text-lg transition-transform duration-300 faq-chevron"></i>
+                </button>
+                <div
+                  class="faq-content text-gray-600 leading-relaxed pb-4 hidden"
+                >
+                  BANK-LEVEL SECURITY! We use the same encryption as Nigerian
+                  banks, secure cloud servers, and full GDPR compliance. Your
+                  customer data is 100% protected, never shared, and backed up
+                  automatically. Plus, we're a registered Nigerian company you
+                  can trust.
+                </div>
+              </div>
+              <!-- FAQ Item 10 -->
+              <div
+                class="bg-white border border-gray-200 rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+                data-aos="fade-up"
+                data-aos-delay="900"
+              >
+                <button
+                  class="w-full text-left font-semibold text-sms-text hover:text-sms-primary flex items-center gap-3 py-4 focus:outline-none faq-trigger justify-between"
+                >
+                  <span class="flex items-center gap-3">
+                    <i class="fa-regular fa-clock text-sms-primary text-2xl flex-shrink-0"></i>
+                    Can I schedule SMS campaigns for later delivery?
+                  </span>
+                  <i class="fa-solid fa-chevron-down text-gray-400 text-lg transition-transform duration-300 faq-chevron"></i>
+                </button>
+                <div
+                  class="faq-content text-gray-600 leading-relaxed pb-4 hidden"
+                >
+                  YES! Schedule messages for any time, any date up to 30 days in
+                  advance! Perfect for birthday wishes, appointment reminders,
+                  promotional campaigns, or following up with customers. Set it
+                  once and forget it - we'll deliver at exactly the right time!
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Contact/Support Card -->
+          <div class="space-y-6" data-aos="fade-left" data-aos-delay="400">
+            <div class="border-0 shadow-lg p-6 rounded-lg bg-white text-center">
+              <div
+                class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-sms-primary/10 mb-4"
+              >
+                <i
+                  class="fa-regular fa-circle-exclamation text-sms-primary text-2xl"
+                ></i>
+              </div>
+              <h3 class="text-lg font-semibold text-sms-text mb-2">
+                Need INSTANT Help?
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Our Nigerian SMS experts are standing by RIGHT NOW to solve your
+                problems!
+              </p>
+              <a
+                href="tel:+2348099999247"
+                class="bg-sms-primary hover:bg-sms-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition-colors w-full flex items-center justify-center gap-2"
+              >
+                <i class="fa-solid fa-phone text-white text-xl"></i>
+                CALL NOW: +234-809-9999-247
+              </a>
+            </div>
+            <div
+              class="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 hover:scale-105 p-6 rounded-lg bg-white"
+            >
+              <div class="flex items-start gap-4">
+                <div
+                  class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-sms-primary/10"
+                >
+                  <i
+                    class="fa-regular fa-circle-exclamation text-sms-primary text-2xl"
+                  ></i>
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-semibold text-sms-text mb-1">
+                    24/7 INSTANT SUPPORT
+                  </h4>
+                  <p class="text-gray-600 mb-2">
+                    Get immediate help from Nigerian SMS experts
+                  </p>
+                  <p class="font-bold text-sms-primary mb-1 text-sm">
+                    +234-809-9999-247
+                  </p>
+                  <div
+                    class="flex items-center gap-1 text-sm text-green-600 font-medium"
+                  >
+                    <i class="fa-regular fa-clock text-green-600 text-base"></i>
+                    Available RIGHT NOW!
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 hover:scale-105 p-6 rounded-lg bg-white"
+            >
+              <div class="flex items-start gap-4">
+                <div
+                  class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-sms-primary/10"
+                >
+                  <i
+                    class="fa-regular fa-envelope text-sms-primary text-2xl"
+                  ></i>
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-semibold text-sms-text mb-1">
+                    Lightning-Fast Email
+                  </h4>
+                  <p class="text-gray-600 mb-2">
+                    Quick solutions for all your SMS questions
+                  </p>
+                  <p class="font-bold text-sms-primary mb-1 text-sm">
+                    info@smslive247.com
+                  </p>
+                  <div
+                    class="flex items-center gap-1 text-sm text-green-600 font-medium"
+                  >
+                    <i class="fa-regular fa-clock text-green-600 text-base"></i>
+                    Response in under 2 hours
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-sms-text text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex flex-col lg:flex-row justify-between gap-8">
+          <!-- Brand Section -->
+          <div class="flex-1 max-w-xl">
+            <div class="flex items-center gap-2 mb-6">
+              <div class="bg-sms-primary p-2 rounded-lg">
+                <i class="fa-regular fa-message text-white text-2xl"></i>
+              </div>
+              <span class="text-2xl font-bold">SMSLive247</span>
+            </div>
+            <p class="text-gray-400 mb-6 leading-relaxed">
+              Nigeria's leading SMS platform trusted by businesses nationwide.
+              Send bulk messages to all networks in Nigeria and 650+ networks
+              across 210 countries with reliable delivery and competitive
+              pricing.
+            </p>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-gray-400">
+                <i
+                  class="fa-regular fa-envelope text-sms-primary text-base"
+                ></i>
+                <span>info@smslive247.com</span>
+              </div>
+              <div class="flex items-center gap-3 text-gray-400">
+                <i class="fa-solid fa-phone text-sms-primary text-base"></i>
+                <span>+234-809-9999-247</span>
+              </div>
+              <div class="flex items-center gap-3 text-gray-400">
+                <i
+                  class="fa-solid fa-location-dot text-sms-primary text-base"
+                ></i>
+                <span>6 Oremeta Street, Oregun, Ikeja, Lagos, Nigeria</span>
+              </div>
+            </div>
+            <!--
+            <div class="flex gap-4 mt-6">
+              <a href="#" class="bg-gray-800 p-3 rounded-lg hover:bg-sms-primary transition-colors">
+                <i class="fa-brands fa-twitter text-base"></i>
+              </a>
+              <a href="#" class="bg-gray-800 p-3 rounded-lg hover:bg-sms-orange transition-colors">
+                <i class="fa-brands fa-linkedin text-base"></i>
+              </a>
+              <a href="#" class="bg-gray-800 p-3 rounded-lg hover:bg-sms-orange transition-colors">
+                <i class="fa-brands fa-github text-base"></i>
+              </a>
+            </div>
+            -->
+          </div>
+          <!-- Links Sections -->
+          <div class="flex-shrink-0 min-w-[180px]">
+            <h3 class="text-lg font-semibold mb-4 mt-8">Legal</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#privacy"
+                  class="text-gray-400 hover:text-sms-orange transition-colors"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#terms"
+                  class="text-gray-400 hover:text-sms-orange transition-colors"
+                  >Terms of Service</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#cookies"
+                  class="text-gray-400 hover:text-sms-orange transition-colors"
+                  >Cookie Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#gdpr"
+                  class="text-gray-400 hover:text-sms-orange transition-colors"
+                  >GDPR Compliance</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#security"
+                  class="text-gray-400 hover:text-sms-orange transition-colors"
+                  >Security</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="my-8 h-px bg-gray-700"></div>
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <div class="text-gray-400">
+            © 2024 SMSLive247 by iDevWorks Technologies Ltd. All rights
+            reserved.
+          </div>
+          <div class="flex items-center gap-6">
+            <div class="flex items-center gap-2 text-gray-400 text-sm">
+              <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+              <span>Service operational 24/7</span>
+            </div>
+            <div class="text-gray-400 text-sm">
+              Proudly serving Nigerian businesses nationwide
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11.2.8/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
