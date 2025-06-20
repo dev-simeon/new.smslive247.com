@@ -261,27 +261,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // FAQ Accordion logic with chevron toggle
-  document.querySelectorAll('.faq-trigger').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var content = btn.parentElement.querySelector('.faq-content');
-      var chevron = btn.querySelector('.faq-chevron');
+  document.querySelectorAll(".faq-trigger").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var content = btn.parentElement.querySelector(".faq-content");
+      var chevron = btn.querySelector(".faq-chevron");
       if (!content) return;
-      var isOpen = !content.classList.contains('hidden');
+      var isOpen = !content.classList.contains("hidden");
       // Close all
-      document.querySelectorAll('.faq-content').forEach(function (el) {
-        el.classList.add('hidden');
-        el.classList.remove('accordion-fade-in');
+      document.querySelectorAll(".faq-content").forEach(function (el) {
+        el.classList.add("hidden");
+        el.classList.remove("accordion-fade-in");
       });
-      document.querySelectorAll('.faq-chevron').forEach(function (icon) {
-        icon.classList.remove('rotate-180');
+      document.querySelectorAll(".faq-chevron").forEach(function (icon) {
+        icon.classList.remove("rotate-180");
       });
       // Open this one if it was closed
       if (!isOpen) {
-        content.classList.remove('hidden');
+        content.classList.remove("hidden");
         // Force reflow for animation
         void content.offsetWidth;
-        content.classList.add('accordion-fade-in');
-        if (chevron) chevron.classList.add('rotate-180');
+        content.classList.add("accordion-fade-in");
+        if (chevron) chevron.classList.add("rotate-180");
       }
     });
   });
