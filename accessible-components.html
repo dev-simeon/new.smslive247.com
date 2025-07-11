@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible UI Components Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded z-50">
+        Skip to main content
+    </a>
+
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <h1 class="text-2xl font-bold text-gray-900">Accessible UI Components</h1>
+                
+                <!-- Accessible Dropdown Example -->
+                <div class="relative">
+                    <button 
+                        id="user-menu-trigger"
+                        data-dropdown-trigger
+                        aria-controls="user-menu"
+                        class="flex items-center space-x-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                        <i class="fa-solid fa-user" aria-hidden="true"></i>
+                        <span>User Menu</span>
+                        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    
+                    <div 
+                        id="user-menu"
+                        class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-10 hidden"
+                    >
+                        <a href="#" role="menuitem" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none">
+                            <i class="fa-solid fa-user-circle mr-2" aria-hidden="true"></i>
+                            Profile
+                        </a>
+                        <a href="#" role="menuitem" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none">
+                            <i class="fa-solid fa-cog mr-2" aria-hidden="true"></i>
+                            Settings
+                        </a>
+                        <hr class="my-2 border-gray-200">
+                        <a href="#" role="menuitem" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none">
+                            <i class="fa-solid fa-sign-out-alt mr-2" aria-hidden="true"></i>
+                            Sign Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Accessible Carousel Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Accessible Carousel</h2>
+            <p class="text-gray-600 mb-6">
+                This carousel is fully keyboard navigable, announces slide changes to screen readers, 
+                and respects user preferences for reduced motion.
+            </p>
+            
+            <div class="accessible-carousel carousel-container bg-white rounded-lg shadow-lg p-6">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-8 rounded-lg text-center">
+                            <h3 class="text-2xl font-bold mb-4">Slide 1: Welcome</h3>
+                            <p class="text-lg">This is the first slide with important information.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="bg-gradient-to-r from-green-500 to-teal-600 text-white p-8 rounded-lg text-center">
+                            <h3 class="text-2xl font-bold mb-4">Slide 2: Features</h3>
+                            <p class="text-lg">Learn about our amazing features and capabilities.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="bg-gradient-to-r from-orange-500 to-red-600 text-white p-8 rounded-lg text-center">
+                            <h3 class="text-2xl font-bold mb-4">Slide 3: Get Started</h3>
+                            <p class="text-lg">Ready to begin? Let's get you started today.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accessible Pagination Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Accessible Pagination</h2>
+            <p class="text-gray-600 mb-6">
+                Instead of infinite scroll, this component provides user-controlled loading with 
+                clear feedback and keyboard navigation support.
+            </p>
+            
+            <div class="accessible-pagination bg-white rounded-lg shadow-lg p-6">
+                <div class="pagination-items space-y-4">
+                    <!-- Initial items -->
+                    <div class="pagination-item p-4 border border-gray-200 rounded-lg" role="article" aria-label="Item 1">
+                        <h3 class="text-lg font-semibold text-gray-900">Sample Article 1</h3>
+                        <p class="text-gray-600 mt-2">This is a sample article with some content to demonstrate the pagination component.</p>
+                        <div class="mt-3 text-sm text-gray-500">
+                            <span class="inline-flex items-center">
+                                <i class="fa-solid fa-calendar mr-1" aria-hidden="true"></i>
+                                January 15, 2025
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination-item p-4 border border-gray-200 rounded-lg" role="article" aria-label="Item 2">
+                        <h3 class="text-lg font-semibold text-gray-900">Sample Article 2</h3>
+                        <p class="text-gray-600 mt-2">Another sample article to show how the pagination system works with multiple items.</p>
+                        <div class="mt-3 text-sm text-gray-500">
+                            <span class="inline-flex items-center">
+                                <i class="fa-solid fa-calendar mr-1" aria-hidden="true"></i>
+                                January 14, 2025
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination-item p-4 border border-gray-200 rounded-lg" role="article" aria-label="Item 3">
+                        <h3 class="text-lg font-semibold text-gray-900">Sample Article 3</h3>
+                        <p class="text-gray-600 mt-2">A third sample article demonstrating the accessible pagination pattern.</p>
+                        <div class="mt-3 text-sm text-gray-500">
+                            <span class="inline-flex items-center">
+                                <i class="fa-solid fa-calendar mr-1" aria-hidden="true"></i>
+                                January 13, 2025
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accessibility Features Info -->
+        <section class="bg-blue-50 rounded-lg p-6">
+            <h2 class="text-2xl font-bold text-blue-900 mb-4">
+                <i class="fa-solid fa-universal-access mr-2" aria-hidden="true"></i>
+                Accessibility Features
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold text-blue-800 mb-3">Keyboard Navigation</h3>
+                    <ul class="space-y-2 text-blue-700">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-check text-green-600 mr-2 mt-1" aria-hidden="true"></i>
+                            <span>Full keyboard support for all interactive elements</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-check text-green-600 mr-2 mt-1" aria-hidden="true"></i>
+                            <span>Logical tab order and focus management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-check text-green-600 mr-2 mt-1" aria-hidden="true"></i>
+                            <span>Arrow key navigation for menus and carousels</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-blue-800 mb-3">Screen Reader Support</h3>
+                    <ul class="space-y-2 text-blue-700">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-check text-green-600 mr-2 mt-1" aria-hidden="true"></i>
+                            <span>Proper ARIA labels and descriptions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-check text-green-600 mr-2 mt-1" aria-hidden="true"></i>
+                            <span>Live region announcements for dynamic content</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-check text-green-600 mr-2 mt-1" aria-hidden="true"></i>
+                            <span>Semantic HTML structure with proper roles</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-white rounded-lg border border-blue-200">
+                <h4 class="font-semibold text-blue-900 mb-2">
+                    <i class="fa-solid fa-lightbulb mr-2" aria-hidden="true"></i>
+                    Try These Keyboard Shortcuts:
+                </h4>
+                <div class="grid sm:grid-cols-2 gap-4 text-sm text-blue-800">
+                    <div>
+                        <kbd class="px-2 py-1 bg-gray-200 rounded text-xs">Tab</kbd> - Navigate between elements
+                    </div>
+                    <div>
+                        <kbd class="px-2 py-1 bg-gray-200 rounded text-xs">Enter/Space</kbd> - Activate buttons
+                    </div>
+                    <div>
+                        <kbd class="px-2 py-1 bg-gray-200 rounded text-xs">Arrow Keys</kbd> - Navigate menus/carousel
+                    </div>
+                    <div>
+                        <kbd class="px-2 py-1 bg-gray-200 rounded text-xs">Escape</kbd> - Close dropdowns/modals
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/accessibility-utils.js"></script>
+    <script src="js/accessible-carousel.js"></script>
+    <script src="js/accessible-dropdown.js"></script>
+    <script src="js/accessible-infinite-scroll.js"></script>
+</body>
+</html>
